@@ -4,15 +4,24 @@ files:
  - source: .
    destination: /var/www/html/
 file_exists_behavior: OVERWRITE
-# hooks:
-#   BeforeInstall:
-#      -location: script.sh
-#       timeout: 300
-#       runas: root
-#      -location: script_me.sh
-#       timeout: 300
-#       runas: root
-#   Install:
-#   AfterInstall:
-#   ApplicationStart:
-#   ValidateService:
+hooks:
+  BeforeInstall:
+     - location: scripts/install.sh
+       timeout: 150
+       runas: root
+  Install:
+     - location: scripts/install.sh
+       timeout: 150
+       runas: root
+  AfterInstall:
+     - location: scripts/install.sh
+       timeout: 150
+       runas: root
+  ApplicationStart:
+     - location: scripts/install.sh
+       timeout: 150
+       runas: root 
+  ValidateService:
+     - location: scripts/install.sh
+       timeout: 150
+       runas: root
